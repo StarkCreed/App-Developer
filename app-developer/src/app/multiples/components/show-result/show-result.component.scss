@@ -1,0 +1,18 @@
+ion-col {
+  border: solid 1px #ffffff;
+  color: #ffffff;
+  text-align: center;
+}
+
+ul {
+  max-height: 300px; /* Ajusta esta altura a lo que necesites */
+  overflow-y: auto; /* Habilita el scroll vertical */
+}
+
+.li-list {
+  box-sizing: border-box;
+  margin: 10px auto;
+  padding: 15px;
+  max-width: 90%;
+  border-radius: 10px;
+}
