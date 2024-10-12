@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth/auth.service';
 
 @Component({
@@ -7,17 +8,14 @@ import { AuthService } from 'src/app/services/auth/auth.service';
   styleUrl: './main-page.component.scss',
 })
 export class AuthComponent {
-  constructor(private authService: AuthService) {}
+  constructor(private authService: AuthService, private router: Router) {}
 
-  loginWithGoogle() {
-    this.authService
-      .loginWithGoogle()
-      .then((result) => {
-        console.log('Inició sesión con Google:', result.user);
-        // Aquí puedes manejar el resultado, como redirigir al usuario a una página específica
-      })
-      .catch((error) => {
-        console.error('Error al iniciar sesión con Google:', error);
-      });
+  async loginWithGoogle(): Promise<void> {
+    try {
+      const result = await this.authService.loginWithGoogle();
+      if (result) this.router.navigate(['multiplos']);
+    } catch (error) {
+      console.error('Error al iniciar sesión con Google:', error);
+    }
   }
 }

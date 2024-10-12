@@ -9,14 +9,12 @@ export class AuthService {
   constructor(private afAuth: AngularFireAuth) {}
 
   // Método para hacer login con Google
-  loginWithGoogle() {
+  loginWithGoogle(): Promise<firebase.auth.UserCredential> {
     return this.afAuth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
   }
 
   // Método para cerrar sesión
-  logout() {
-    return this.afAuth.signOut();
-  }
+  logout(): void {}
 
   // Método para obtener el estado de autenticación
   getAuthState() {

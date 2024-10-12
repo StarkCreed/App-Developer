@@ -1,13 +1,11 @@
-<div>
-  <ul>
-    <li
-      class="li-list"
-      *ngFor="let item of listNumbers"
-      [ngStyle]="{
-        'background-color': item.color
-      }"
-    >
-      {{ item.numero }}
-    </li>
-  </ul>
-</div>
+<ul>
+  <li
+    class="li-list ion-margin-top"
+    *ngFor="let item of listNumbers"
+    [ngStyle]="{
+      'background-color': item.color
+    }"
+  >
+    {{ item.numero }}
+  </li>
+</ul>

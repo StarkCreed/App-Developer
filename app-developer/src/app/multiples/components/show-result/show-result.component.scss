@@ -6,14 +6,14 @@ ion-col {
 
 ul {
   list-style-type: none;
-  max-height: 550px; /* Ajusta esta altura a lo que necesites */
+  max-height: 410px; /* Ajusta esta altura a lo que necesites */
   overflow-y: auto; /* Habilita el scroll vertical */
 }
 
 .li-list {
-  box-sizing: border-box;
-  margin: 10px auto;
+  // box-sizing: border-box;
+  // margin: 10px auto;
   padding: 15px;
-  max-width: 90%;
+  max-width: 85%; /* Ajustar el ancho máximo para que no se acerque tanto al borde */
   border-radius: 10px;
 }

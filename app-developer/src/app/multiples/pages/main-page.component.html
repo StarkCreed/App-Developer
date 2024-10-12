@@ -5,7 +5,9 @@
     </ion-toolbar>
   </ion-header>
   <ion-content class="ion-padding">
-    <ion-button color="medium"> Cerrar seción </ion-button>
+    <ion-button color="medium" (click)="logoutSecion()">
+      Cerrar seción
+    </ion-button>
   </ion-content>
 </ion-menu>
 
@@ -19,8 +21,18 @@
   </ion-header>
 
   <ion-content class="ion-padding">
-    <app-insert-number (results)="results($event)"></app-insert-number>
-
-    <app-show-result [listNumbers]="listNumbers"></app-show-result>
+    <div class="centered-container">
+      <ion-card>
+        <ion-card-header>
+          <ion-card-header>
+            <ion-card-title>Ingresa tu número</ion-card-title>
+          </ion-card-header>
+          <app-insert-number (results)="results($event)"></app-insert-number>
+        </ion-card-header>
+        <ion-card-content>
+          <app-show-result [listNumbers]="listNumbers"></app-show-result>
+        </ion-card-content>
+      </ion-card>
+    </div>
   </ion-content>
 </div>

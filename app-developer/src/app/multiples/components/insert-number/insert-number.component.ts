@@ -23,13 +23,13 @@ export class InsertNumberComponent {
   async emitResult(): Promise<void> {
     const loading = await this.loadingController.create({
       message: 'Cargando...',
-      spinner: 'crescent', // Puedes cambiar el tipo de spinner
-      duration: 2000, // Puedes ajustar la duración máxima
+      spinner: 'crescent',
+      duration: 2000,
     });
+
     await loading.present();
 
-    setTimeout(async () => {
-      // Aquí iría tu lógica para obtener los resultados
+    try {
       for (let index = 0; index <= this.data; index++) {
         if (index % 3 === 0) {
           this.multiples.push({
@@ -63,12 +63,20 @@ export class InsertNumberComponent {
       }
 
       this.results.emit(this.multiples);
-      this.multiplesServicer.addDocument('multiplos', {
+
+      await this.multiplesServicer.addDocument('multiplos', {
         resultados: this.multiples,
       });
-      this.multiples = [];
 
+      console.log({
+        resultados: this.multiples,
+      });
+
+      this.multiples = [];
+    } catch (error) {
+      console.error('Error al emitir los resultados:', error);
+    } finally {
       await this.loadingController.dismiss();
-    }, 1000); // Simula una demora de 3 segundos para la carga de datos
+    }
   }
 }

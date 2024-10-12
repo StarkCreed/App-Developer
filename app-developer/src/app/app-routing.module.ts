@@ -1,7 +1,12 @@
 import { NgModule } from '@angular/core';
-import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
+import { MainComponent } from './multiples/pages/main-page.component';
+import { AuthComponent } from './auth/pages/main-page.component';
 
-const routes: Routes = [];
+const routes: Routes = [
+  { path: 'login', component: AuthComponent }, // Ruta predeterminada (Home)
+  { path: 'multiplos', component: MainComponent }, // Ruta para /about
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
