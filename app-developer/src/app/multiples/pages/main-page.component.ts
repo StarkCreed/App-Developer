@@ -11,7 +11,7 @@ export class MainComponent {
 
   results(results: Numero[]): void {
     this.result = results;
-    console.log(results);
+    // console.log(results);
   }
 
   get listNumbers(): Numero[] {

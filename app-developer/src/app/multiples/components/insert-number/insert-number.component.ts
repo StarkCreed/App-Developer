@@ -1,7 +1,7 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Numero } from '../../interfaces/numero.interface';
-import { filter } from 'rxjs';
 import { LoadingController } from '@ionic/angular';
+import { MultiplesService } from 'src/app/services/multiples/multiples.service';
 
 @Component({
   selector: 'app-insert-number',
@@ -9,7 +9,10 @@ import { LoadingController } from '@ionic/angular';
   styleUrls: ['./insert-number.component.scss'],
 })
 export class InsertNumberComponent {
-  constructor(private loadingController: LoadingController) {}
+  constructor(
+    private loadingController: LoadingController,
+    private multiplesServicer: MultiplesService
+  ) {}
 
   @Output()
   public results: EventEmitter<Numero[]> = new EventEmitter();
@@ -60,6 +63,9 @@ export class InsertNumberComponent {
       }
 
       this.results.emit(this.multiples);
+      this.multiplesServicer.addDocument('multiplos', {
+        resultados: this.multiples,
+      });
       this.multiples = [];
 
       await this.loadingController.dismiss();

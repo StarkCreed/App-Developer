@@ -5,7 +5,8 @@ ion-col {
 }
 
 ul {
-  max-height: 300px; /* Ajusta esta altura a lo que necesites */
+  list-style-type: none;
+  max-height: 550px; /* Ajusta esta altura a lo que necesites */
   overflow-y: auto; /* Habilita el scroll vertical */
 }
 
