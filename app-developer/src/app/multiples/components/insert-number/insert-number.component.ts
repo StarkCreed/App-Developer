@@ -29,51 +29,45 @@ export class InsertNumberComponent {
 
     await loading.present();
 
-    try {
-      for (let index = 0; index <= this.data; index++) {
-        if (index % 3 === 0) {
-          this.multiples.push({
-            numero: index,
-            multiplo: 3,
-            color: 'green',
-            exist: true,
-          });
-        } else if (index % 5 === 0) {
-          this.multiples.push({
-            numero: index,
-            multiplo: 5,
-            color: 'red',
-            exist: true,
-          });
-        } else if (index % 7 === 0) {
-          this.multiples.push({
-            numero: index,
-            multiplo: 7,
-            color: 'blue',
-            exist: true,
-          });
-        } else {
-          this.multiples.push({
-            numero: index,
-            multiplo: 0,
-            color: 'black',
-            exist: true,
-          });
-        }
+    for (let index = 0; index <= this.data; index++) {
+      if (index % 3 === 0) {
+        this.multiples.push({
+          numero: index,
+          multiplo: 3,
+          color: 'green',
+          exist: true,
+        });
+      } else if (index % 5 === 0) {
+        this.multiples.push({
+          numero: index,
+          multiplo: 5,
+          color: 'red',
+          exist: true,
+        });
+      } else if (index % 7 === 0) {
+        this.multiples.push({
+          numero: index,
+          multiplo: 7,
+          color: 'blue',
+          exist: true,
+        });
+      } else {
+        this.multiples.push({
+          numero: index,
+          multiplo: 0,
+          color: 'black',
+          exist: true,
+        });
       }
-
-      this.results.emit(this.multiples);
-
-      await this.multiplesServicer.addDocument('multiplos', {
-        resultados: this.multiples,
-        uid: localStorage.getItem('user'),
-      });
-
-      this.multiples = [];
-    } catch (error) {
-      console.error('Error al emitir los resultados:', error);
-    } finally {
-      await this.loadingController.dismiss();
     }
+
+    await this.multiplesServicer.addDocument('multiplos', {
+      resultados: this.multiples,
+      uid: localStorage.getItem('user'),
+    });
+
+    this.results.emit(this.multiples);
+    this.multiples = [];
+    this.loadingController.dismiss();
   }
 }
