@@ -16,14 +16,10 @@ export class MainComponent {
     this.result = results;
   }
 
-  logoutSecion(): void {
-    try {
-      this.logout.logout();
-      localStorage.removeItem('user');
-      this.router.navigate(['/login']);
-    } catch (error) {
-      console.error('Error al cerrar sesión:', error);
-    }
+  async logoutSecion(): Promise<void> {
+    await this.logout.logout();
+    localStorage.removeItem('user');
+    this.router.navigate(['/login']);
   }
 
   get listNumbers(): Numero[] {
