@@ -69,5 +69,8 @@ testem.log
 .DS_Store
 Thumbs.db
 
-src/environments/environment.ts
-src/environments/environment.prod.ts
+# Ignorar todos los archivos en la carpeta environments
+/src/environments/*
+
+# Ignorar archivos específicos como hosting.d3d3.cache
+hosting.d3d3.cache
