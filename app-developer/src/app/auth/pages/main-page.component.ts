@@ -13,7 +13,9 @@ export class AuthComponent {
   async loginWithGoogle(): Promise<void> {
     try {
       const result = await this.authService.loginWithGoogle();
-      if (result) this.router.navigate(['multiplos']);
+      localStorage.setItem('user', result.user!.uid);
+
+      this.router.navigate(['multiplos']);
     } catch (error) {
       console.error('Error al iniciar sesión con Google:', error);
     }

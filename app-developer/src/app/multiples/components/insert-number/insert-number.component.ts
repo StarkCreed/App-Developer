@@ -66,10 +66,7 @@ export class InsertNumberComponent {
 
       await this.multiplesServicer.addDocument('multiplos', {
         resultados: this.multiples,
-      });
-
-      console.log({
-        resultados: this.multiples,
+        uid: localStorage.getItem('user'),
       });
 
       this.multiples = [];

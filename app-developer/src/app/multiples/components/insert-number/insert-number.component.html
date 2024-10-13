@@ -16,7 +16,7 @@
         <ion-button
           shape="round"
           expand="block"
-          [disabled]="data === null || undefined"
+          [disabled]="data === null || undefined || data < 0"
           type="submit"
         >
           Ver Resultado

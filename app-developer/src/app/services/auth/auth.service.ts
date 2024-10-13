@@ -14,7 +14,9 @@ export class AuthService {
   }
 
   // Método para cerrar sesión
-  logout(): void {}
+  logout(): Promise<void> {
+    return this.afAuth.signOut();
+  }
 
   // Método para obtener el estado de autenticación
   getAuthState() {

@@ -11,6 +11,8 @@ import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore'; // Firestore
 import { environment } from '../environments/environment';
 import { AuthModule } from './auth/auth.module';
+import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
+import { getAuth, provideAuth } from '@angular/fire/auth';
 
 @NgModule({
   declarations: [AppComponent],
@@ -24,7 +26,11 @@ import { AuthModule } from './auth/auth.module';
     MultiplesPageModule,
     AuthModule,
   ],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
+  providers: [
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),
+    provideAuth(() => getAuth()),
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
