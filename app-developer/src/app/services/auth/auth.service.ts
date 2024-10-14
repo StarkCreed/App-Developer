@@ -6,9 +6,10 @@ import firebase from 'firebase/compat/app';
   providedIn: 'root',
 })
 export class AuthService {
+  //Dependencia inyectada
   constructor(private afAuth: AngularFireAuth) {}
 
-  // Método para hacer login con Google
+  // Método para hacer loguearse con Google
   loginWithGoogle(): Promise<firebase.auth.UserCredential> {
     return this.afAuth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
   }
@@ -16,10 +17,5 @@ export class AuthService {
   // Método para cerrar sesión
   logout(): Promise<void> {
     return this.afAuth.signOut();
-  }
-
-  // Método para obtener el estado de autenticación
-  getAuthState() {
-    return this.afAuth.authState;
   }
 }

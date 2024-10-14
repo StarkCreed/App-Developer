@@ -9,6 +9,7 @@ import { MultiplesService } from 'src/app/services/multiples/multiples.service';
   styleUrls: ['./insert-number.component.scss'],
 })
 export class InsertNumberComponent {
+  //Dependencias inyectadas
   constructor(
     private loadingController: LoadingController,
     private multiplesServicer: MultiplesService
@@ -21,6 +22,7 @@ export class InsertNumberComponent {
   public multiples: Numero[] = [];
 
   async emitResult(): Promise<void> {
+    //loadingController - Componente de carga
     const loading = await this.loadingController.create({
       message: 'Cargando...',
       spinner: 'crescent',
@@ -61,11 +63,13 @@ export class InsertNumberComponent {
       }
     }
 
+    //Guardar resultados en firestore con el id del usuaio
     await this.multiplesServicer.addDocument('multiplos', {
       resultados: this.multiples,
       uid: localStorage.getItem('user'),
     });
 
+    //Emite los resultados
     this.results.emit(this.multiples);
     this.multiples = [];
     this.loadingController.dismiss();

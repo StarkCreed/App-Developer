@@ -9,15 +9,19 @@ import { Router } from '@angular/router';
   styleUrl: './main-page.component.scss',
 })
 export class MainComponent {
+  //Dependencias inyectadas
   constructor(private logout: AuthService, private router: Router) {}
+
   public result: Numero[] = [];
 
   results(results: Numero[]): void {
     this.result = results;
   }
 
-  async logoutSecion(): Promise<void> {
+  async logoutSesion(): Promise<void> {
     await this.logout.logout();
+
+    //Borra el id del usuario
     localStorage.removeItem('user');
     this.router.navigate(['/login']);
   }

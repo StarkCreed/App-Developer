@@ -13,6 +13,8 @@ export class AuthComponent {
   async loginWithGoogle(): Promise<void> {
     try {
       const result = await this.authService.loginWithGoogle();
+
+      //Agrega el id del usuario
       localStorage.setItem('user', result.user!.uid);
 
       this.router.navigate(['multiplos']);

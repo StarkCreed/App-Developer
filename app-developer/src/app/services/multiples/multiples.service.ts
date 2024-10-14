@@ -5,9 +5,10 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
   providedIn: 'root',
 })
 export class MultiplesService {
+  //Dependencia inyectada
   constructor(private firestore: AngularFirestore) {}
 
-  // Agregar documento
+  //Método para agregar documento
   addDocument(collectionName: string, data: any) {
     return this.firestore.collection(collectionName).add(data);
   }
